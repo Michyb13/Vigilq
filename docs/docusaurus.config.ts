@@ -13,13 +13,11 @@ const config: Config = {
     v4: true,
   },
 
-  // TODO: replace with the real domain once this is deployed (e.g. on Vercel)
-  url: 'https://docs.vigilq.dev',
+  url: 'https://vigilq.vercel.app',
   baseUrl: '/',
 
-  // TODO: replace once the GitHub repo exists
-  organizationName: 'vigilq',
-  projectName: 'vigilq',
+  organizationName: 'Michyb13',
+  projectName: 'Vigilq',
 
   onBrokenLinks: 'throw',
 
