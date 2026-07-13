@@ -6,13 +6,13 @@ title: TypeScript
 # TypeScript SDK
 
 ```bash
-npm install @vigilq/client
+npm install vigilq-client
 ```
 
 ## Connect
 
 ```ts
-import { JobQueueClient } from "@vigilq/client";
+import { JobQueueClient } from "vigilq-client";
 
 const queue = new JobQueueClient({
   baseUrl: process.env.QUEUE_URL!,

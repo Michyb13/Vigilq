@@ -67,11 +67,11 @@ Install a client SDK in whatever app or script will trigger the work:
 <TabItem value="ts" label="TypeScript" default>
 
 ```bash
-npm install @vigilq/client
+npm install vigilq-client
 ```
 
 ```ts
-import { JobQueueClient } from "@vigilq/client";
+import { JobQueueClient } from "vigilq-client";
 
 const queue = new JobQueueClient({
   baseUrl: "http://localhost:4000",

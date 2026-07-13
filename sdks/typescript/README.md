@@ -1,4 +1,4 @@
-# @vigilq/client
+# vigilq-client
 
 TypeScript client SDK for VigilQ — a self-hosted distributed job queue with automatic retries, exponential backoff, worker pools, and AI-powered dead-letter triage.
 
@@ -7,13 +7,13 @@ This package talks to a running VigilQ engine over HTTP. It doesn't run a queue 
 ## Install
 
 ```bash
-npm install @vigilq/client
+npm install vigilq-client
 ```
 
 ## Enqueue a job
 
 ```ts
-import { JobQueueClient } from "@vigilq/client";
+import { JobQueueClient } from "vigilq-client";
 
 const queue = new JobQueueClient({
   baseUrl: process.env.QUEUE_URL!,   // e.g. http://localhost:4000

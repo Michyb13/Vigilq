@@ -467,7 +467,7 @@ than bolted on afterward.
       `/jobs/:id/complete`, `/jobs/:id/fail`, `/pools/depths` (for the
       future autoscaler). Verified end-to-end over real HTTP against
       live Postgres.
-- [x] TS SDK (`sdks/typescript`, `@vigilq/client`) — `enqueue()`,
+- [x] TS SDK (`sdks/typescript`, `vigilq-client`) — `enqueue()`,
       `getJobStatus()`, `registerWorker()`/`startWorkers()` (concurrent
       poll loops, automatic lease renewal via heartbeat while a handler
       runs, complete/fail reporting), graceful `stop()`. Verified end-to-end

@@ -17,7 +17,7 @@ The short version: **the same `docker-compose.yml` and the same worker code run 
 
 ```ts
 // worker/index.ts
-import { JobQueueClient } from "@vigilq/client";
+import { JobQueueClient } from "vigilq-client";
 import { sendEmail } from "./email-provider";
 import sharp from "sharp";
 import { downloadFromBucket, uploadToBucket } from "./storage";

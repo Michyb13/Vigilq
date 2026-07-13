@@ -1,5 +1,5 @@
 {
-  "name": "@vigilq/client",
+  "name": "vigilq-client",
   "version": "0.1.0",
   "description": "TypeScript client SDK for VigilQ, the self-hosted distributed job queue",
   "type": "module",
