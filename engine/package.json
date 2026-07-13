@@ -1,0 +1,49 @@
+{
+  "name": "vigilq-engine",
+  "version": "1.0.0",
+  "description": "Vigilq engine — the self-hosted distributed job queue core (Postgres + Fastify).",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "sweeper": "node dist/sweep.js",
+    "sweeper:dev": "tsx watch src/sweep.ts",
+    "rotate-key": "node dist/rotate-key.js",
+    "rotate-key:dev": "tsx src/rotate-key.ts",
+    "migrate:create": "node-pg-migrate create -j sql --dir migrations --",
+    "migrate:up": "node-pg-migrate up --dir migrations --migration-file-language sql",
+    "migrate:down": "node-pg-migrate down --dir migrations --migration-file-language sql",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.2",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.111.0",
+    "@fastify/static": "^10.1.0",
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.10.0",
+    "kysely": "^0.29.3",
+    "node-cron": "^4.6.0",
+    "node-pg-migrate": "^8.0.4",
+    "openai": "^6.46.0",
+    "pg": "^8.22.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/node-cron": "^3.0.11",
+    "@types/pg": "^8.20.0",
+    "tsx": "^4.23.0",
+    "typescript": "^7.0.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

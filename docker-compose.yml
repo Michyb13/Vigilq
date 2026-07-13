@@ -1,0 +1,72 @@
+# Two ways to run this, controlled entirely by DATABASE_URL + one profile flag:
+#
+# 1. Bundled Postgres (simplest for trying Vigilq out):
+#      DATABASE_URL=postgres://postgres:postgres@db:5432/vigilq   (in .env)
+#      docker compose --profile bundled-db up
+#
+# 2. Your own existing Postgres instance (local, RDS, Supabase, whatever):
+#      DATABASE_URL=postgres://user:pass@your-host:5432/your-db   (in .env)
+#      docker compose up
+#      (no --profile flag — the "db" service below never starts, and
+#       nothing else in this file or the engine cares that it doesn't exist)
+#
+# The engine has no idea which mode it's in — it just opens whatever
+# connection string DATABASE_URL contains. The "db" service exists purely
+# as an optional convenience, gated behind a Compose profile so it's never
+# running unless explicitly asked for.
+#
+# Schema setup is fully automatic in both modes — the engine runs its own
+# migrations (engine/migrations/, via node-pg-migrate) on every boot,
+# before anything else. There is no manual schema.sql step for either the
+# bundled or the external Postgres path, and no docker-entrypoint-initdb.d
+# trick needed — that mechanism only ever worked for the bundled database
+# anyway.
+
+services:
+  db:
+    image: postgres:16
+    profiles: ["bundled-db"]
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-vigilq}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - vigilq_pgdata:/var/lib/postgresql/data
+    # Deliberately not published to the host — engine/sweeper only ever
+    # reach this over the internal Docker network (db:5432), and publishing
+    # it to the host just creates a port conflict for anyone (very possibly
+    # including you) who already has a local Postgres on 5432. Uncomment
+    # below only if you specifically want to connect a host GUI client to
+    # the bundled database, and change the host-side port if 5432 is taken:
+    # ports:
+    #   - "5433:5432"
+
+  engine:
+    build:
+      context: .
+      dockerfile: engine/Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      # AI triage: pick one provider, BYOK. Any provider's key/model left
+      # unset means triage is silently disabled — see engine/src/triage/.
+      - AI_PROVIDER=${AI_PROVIDER:-anthropic}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GOOGLE_MODEL=${GOOGLE_MODEL}
+
+  sweeper:
+    build:
+      context: .
+      dockerfile: engine/Dockerfile
+    command: ["node", "dist/sweep.js"]
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - SWEEP_CRON_SCHEDULE=${SWEEP_CRON_SCHEDULE:-*/10 * * * * *}
+
+volumes:
+  vigilq_pgdata:

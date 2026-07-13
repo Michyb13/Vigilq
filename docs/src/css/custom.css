@@ -1,0 +1,26 @@
+/**
+ * VigilQ's "vigil lamp" amber accent, matching the dashboard.
+ */
+:root {
+  --ifm-color-primary: #b8791f;
+  --ifm-color-primary-dark: #a66d1c;
+  --ifm-color-primary-darker: #9c671a;
+  --ifm-color-primary-darkest: #805515;
+  --ifm-color-primary-light: #ca8522;
+  --ifm-color-primary-lighter: #d38b23;
+  --ifm-color-primary-lightest: #e0a54d;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #e8a94a;
+  --ifm-color-primary-dark: #e39c33;
+  --ifm-color-primary-darker: #e1952a;
+  --ifm-color-primary-darkest: #ba7a17;
+  --ifm-color-primary-light: #edb661;
+  --ifm-color-primary-lighter: #efbd6d;
+  --ifm-color-primary-lightest: #f4d091;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-color: #0b0e14;
+}

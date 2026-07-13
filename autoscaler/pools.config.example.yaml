@@ -1,0 +1,19 @@
+engineUrl: http://localhost:4000
+apiKey: qk_live_replace_me
+composeFile: ../docker-compose.yml
+pollIntervalSeconds: 30
+
+pools:
+  standard:
+    dockerService: worker-standard
+    minWorkers: 2
+    maxWorkers: 10
+    scaleUpThreshold: 5
+    scaleDownIdleMinutes: 10
+
+  gpu-large:
+    dockerService: worker-gpu-large
+    minWorkers: 0
+    maxWorkers: 5
+    scaleUpThreshold: 3
+    scaleDownIdleMinutes: 10

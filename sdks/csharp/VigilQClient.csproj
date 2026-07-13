@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>VigilQ.Client</PackageId>
+    <Description>C# client SDK for VigilQ, the self-hosted distributed job queue.</Description>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Demo/ is a separate console app referencing this library, not part
+         of the library itself — excluded so its Program.cs (top-level
+         statements) doesn't get picked up by this project's default globbing. -->
+    <Compile Remove="Demo/**/*.cs" />
+  </ItemGroup>
+
+</Project>

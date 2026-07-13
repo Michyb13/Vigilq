@@ -1,0 +1,46 @@
+{
+  "name": "@vigilq/client",
+  "version": "0.1.0",
+  "description": "TypeScript client SDK for VigilQ, the self-hosted distributed job queue",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "dev": "tsx watch src/index.ts"
+  },
+  "keywords": [
+    "job-queue",
+    "task-queue",
+    "background-jobs",
+    "distributed-queue",
+    "postgres",
+    "self-hosted"
+  ],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.28.2",
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.0",
+    "typescript": "^7.0.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

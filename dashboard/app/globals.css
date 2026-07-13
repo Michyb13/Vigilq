@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0b0e14;
+  --surface: #131826;
+  --surface-2: #1a2032;
+  --surface-3: #212942;
+  --border: #262d40;
+  --text: #e7e4dc;
+  --text-dim: #8b93a8;
+  --text-faint: #5b6379;
+  --accent: #e8a94a;
+  --accent-dim: #4a3a22;
+  --accent-fg: #1a1204;
+
+  --status-pending-bg: #1b2c4d;
+  --status-pending-fg: #7fa8f5;
+  --status-running-bg: #103334;
+  --status-running-fg: #5cc9d1;
+  --status-completed-bg: #123321;
+  --status-completed-fg: #5fcf8b;
+  --status-failed-bg: #3a2410;
+  --status-failed-fg: #ec9a5b;
+  --status-dead-bg: #3a1512;
+  --status-dead-fg: #ee7263;
+
+  --rail: #333c56;
+  --code-bg: #0e1220;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f2f3f7;
+    --surface: #ffffff;
+    --surface-2: #f7f8fb;
+    --surface-3: #eef0f6;
+    --border: #dde1ea;
+    --text: #1a1f2e;
+    --text-dim: #565f78;
+    --text-faint: #8b93a8;
+    --accent: #b8791f;
+    --accent-dim: #f3e0bd;
+    --accent-fg: #ffffff;
+
+    --status-pending-bg: #e7edfd;
+    --status-pending-fg: #3057c9;
+    --status-running-bg: #dcf3f3;
+    --status-running-fg: #167e88;
+    --status-completed-bg: #e0f5e7;
+    --status-completed-fg: #23884f;
+    --status-failed-bg: #fdece0;
+    --status-failed-fg: #b25a19;
+    --status-dead-bg: #fce3e1;
+    --status-dead-fg: #c23a2c;
+
+    --rail: #c7cddb;
+    --code-bg: #f5f6fa;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #f2f3f7;
+  --surface: #ffffff;
+  --surface-2: #f7f8fb;
+  --surface-3: #eef0f6;
+  --border: #dde1ea;
+  --text: #1a1f2e;
+  --text-dim: #565f78;
+  --text-faint: #8b93a8;
+  --accent: #b8791f;
+  --accent-dim: #f3e0bd;
+  --accent-fg: #ffffff;
+
+  --status-pending-bg: #e7edfd;
+  --status-pending-fg: #3057c9;
+  --status-running-bg: #dcf3f3;
+  --status-running-fg: #167e88;
+  --status-completed-bg: #e0f5e7;
+  --status-completed-fg: #23884f;
+  --status-failed-bg: #fdece0;
+  --status-failed-fg: #b25a19;
+  --status-dead-bg: #fce3e1;
+  --status-dead-fg: #c23a2c;
+
+  --rail: #c7cddb;
+  --code-bg: #f5f6fa;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b0e14;
+  --surface: #131826;
+  --surface-2: #1a2032;
+  --surface-3: #212942;
+  --border: #262d40;
+  --text: #e7e4dc;
+  --text-dim: #8b93a8;
+  --text-faint: #5b6379;
+  --accent: #e8a94a;
+  --accent-dim: #4a3a22;
+  --accent-fg: #1a1204;
+
+  --status-pending-bg: #1b2c4d;
+  --status-pending-fg: #7fa8f5;
+  --status-running-bg: #103334;
+  --status-running-fg: #5cc9d1;
+  --status-completed-bg: #123321;
+  --status-completed-fg: #5fcf8b;
+  --status-failed-bg: #3a2410;
+  --status-failed-fg: #ec9a5b;
+  --status-dead-bg: #3a1512;
+  --status-dead-fg: #ee7263;
+
+  --rail: #333c56;
+  --code-bg: #0e1220;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-text-faint: var(--text-faint);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-accent-fg: var(--accent-fg);
+
+  --color-status-pending-bg: var(--status-pending-bg);
+  --color-status-pending-fg: var(--status-pending-fg);
+  --color-status-running-bg: var(--status-running-bg);
+  --color-status-running-fg: var(--status-running-fg);
+  --color-status-completed-bg: var(--status-completed-bg);
+  --color-status-completed-fg: var(--status-completed-fg);
+  --color-status-failed-bg: var(--status-failed-bg);
+  --color-status-failed-fg: var(--status-failed-fg);
+  --color-status-dead-bg: var(--status-dead-bg);
+  --color-status-dead-fg: var(--status-dead-fg);
+
+  --color-rail: var(--rail);
+  --color-code-bg: var(--code-bg);
+
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-plex-sans), -apple-system, sans-serif;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
